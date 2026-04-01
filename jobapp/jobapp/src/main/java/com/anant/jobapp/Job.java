@@ -1,5 +1,14 @@
 package com.anant.jobapp;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Job {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     private String title;
     private String description;
@@ -30,5 +39,22 @@ public class Job {
     }
     public double getSalary(){
         return salary;
+    }
+
+    //setters
+    public void setId(int id){
+        this.id=id;
+    }
+    public void setTitle(String title){
+        this.title=title;
+    }
+    public void setDecription(String description){
+        this.description=description;
+    }
+    public void setLocation(String location){
+        this.location=location;
+    }
+    public void setSalary(double salary){
+        this.salary=salary;
     }
 }

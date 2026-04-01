@@ -6,7 +6,15 @@ import java.util.List;
 //private List<Job> jobs = new ArrayList<>(); // real list, can add/remove
 @Service
 public class JobService {
-    private List<Job> jobs=new ArrayList<>();
+    private List<Job> jobs=new ArrayList<>();// right now we have our all data in this line . 
+    // this is ram memory temporary storage . 
+    // but what if two users apply to same job, data will not shared properly .
+    // once the server is closed all data gone
+    // what if 1 million jobs are there then the ram runs out .
+    // this problem is sloved by database in which:
+    //1) data is permanent on disk.
+    //2)everyone can access same data .
+    //3)handles millions of records efficiently.
     // public List<Job> getAllJobs() { 
     //     return List.of(  // return List.of(...) // fixed list, cannot add to it
     public JobService(){
@@ -14,7 +22,6 @@ public class JobService {
             jobs.add(new Job(2,"Frontend Developer Intern","Build UI components","Bangalore",12000));
             jobs.add(new Job(3,"Full Stack Developer","Build comlpete features","Delhi",25000));
     }
-    
     public List<Job> getAllJobs() {
         return jobs;
     }
