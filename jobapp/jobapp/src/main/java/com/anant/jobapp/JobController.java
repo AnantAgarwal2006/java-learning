@@ -45,7 +45,7 @@ public class JobController {
         // }
     
     @GetMapping("/jobs/{id}")
-    public Job getJobById(@PathVariable int id){
+    public Job getJobById(@PathVariable Integer id){
         // @PathVariable int id
         // this tells Spring:take the {id}fom the URL  and give it to this method as "id".
         return jobService.getJobById(id);
