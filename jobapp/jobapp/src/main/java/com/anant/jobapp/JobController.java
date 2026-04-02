@@ -1,8 +1,10 @@
 package com.anant.jobapp;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
@@ -57,6 +59,23 @@ public class JobController {
         jobService.addJob(job);
         return "Job added successfully";
     }
+    // When someone sends DELETE request to /jobs/1 run this method
+    // if deleted then service returned true else job not found.
+    @DeleteMapping("/jobs/{id}")
+    public String deleteJob(@PathVariable Integer id){
+        boolean deleted=jobService.deleteJob(id);
+        if(deleted){
+            return "Job deleted successfully";
+        }
+        return"Job not found";
+    }
+    @PutMapping("/jobs/{id}")
+    // when someone sends PUT request to /jobs/1 run this method.
+    public Job updateJob(@PathVariable Integer id ,@RequestBody Job updatedJob){
+        //@RequestBody Job updatedJob : new job data comes in request body as JSON
+        return jobService.updateJob(id, updatedJob);
+    }
+    // returns the updated job -> good practise-> return what was saved so caller can verify.
 }
 /* 
 **`@PostMapping("/jobs")`**

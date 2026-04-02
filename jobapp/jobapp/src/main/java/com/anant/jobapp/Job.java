@@ -54,7 +54,7 @@ public class Job {
     public void setTitle(String title){
         this.title=title;
     }
-    public void setDecription(String description){
+    public void setDescription(String description){
         this.description=description;
     }
     public void setLocation(String location){
