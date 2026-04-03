@@ -1,12 +1,14 @@
 package com.anant.jobapp;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-// tells Hibernate -> "this calss represebts a database table"-> Hiberante will create a job table in MySQL automatically .
+// tells Hibernate -> "this calss represents a database table"-> Hiberante will create a job table in MySQL automatically .
 public class Job {
     @Id
     // Marks id as the primary key if the table-> Primary key-> uniwue identifier for each row
@@ -48,7 +50,7 @@ public class Job {
     }
 
     //setters
-    public void setId(int id){
+    public void setId(Integer id){
         this.id=id;
     }
     public void setTitle(String title){
@@ -63,4 +65,5 @@ public class Job {
     public void setSalary(double salary){
         this.salary=salary;
     }
+    
 }
