@@ -11,6 +11,7 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     // SELECT * FROM users WHERE username = ?
     /*
     When a user tries to login with a username — we need to find them by username, not by id.
-JPA has a feature called derived queries — you name the method in a specific way and JPA automatically generates the SQL. */
+    JPA has a feature called derived queries — you name the method in a specific way and JPA automatically generates the SQL.
+    jpa reads the method name and auto generated sql , that is a derived query*/
 }
 

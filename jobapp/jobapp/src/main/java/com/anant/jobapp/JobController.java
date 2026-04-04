@@ -18,9 +18,9 @@ public class JobController {
     public JobController(JobService jobService){
         this.jobService=jobService;
     }
-    //     Instead Spring automatically creates `JobService` and passes it to your controller. This is called **Dependency Injection.**
+    // Instead Spring automatically creates `JobService` and passes it to your controller. This is called **Dependency Injection.**
 
-        // Think of it like:
+    // Think of it like:
     // > "I need a JobService. Spring, please give me one."
 
     // Spring handles the creation. You just use it.
@@ -33,19 +33,7 @@ public class JobController {
         // when someone visits /job/1 -> id becomes 1 
         // when someone visits /job/2 -> id becomes 2
         // When someone sends a GET request to `/jobs` → run this method
-        // public List<String> getAllJobs() {  { 
-        //return List.of( // Returns a simple list of job titles
-        //     "Backend Developer Intern",
-        //     "Frontend Developer Intern",
-        //     "Full Stack Developer"
-        //     // this is a fake data ,in real world ,job has many details ->titile,description,location,salary etc.
-        // );
-        // now the method returnning the real objects now
-
-        // public List<Job> getAllJobs() { 
-        //       jobService.getAllJobs();return 
-        // }
-    
+        // now the method returning the real objects now
     @GetMapping("/jobs/{id}")
     public Job getJobById(@PathVariable Integer id){
         // @PathVariable int id
@@ -69,6 +57,8 @@ public class JobController {
         }
         return"Job not found";
     }
+    // When someone sends DELETE request to /jobs/1 run this method
+    // if deleted then service returned true else job not found.
     @PutMapping("/jobs/{id}")
     // when someone sends PUT request to /jobs/1 run this method.
     public Job updateJob(@PathVariable Integer id ,@RequestBody Job updatedJob){

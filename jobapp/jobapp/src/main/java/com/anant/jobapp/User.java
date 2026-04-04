@@ -10,7 +10,8 @@ import jakarta.persistence.Column;
 @Entity
 /// we need one more annotation because user is a reserved word in mysql so we need to name the table users explicitly.
 // the annotation is @Table(name="users")
-@Table(name="users")
+//If you name it users directly, you can avoid the conflict. @Table(name="users") just makes it explicit and safe.
+@Table(name="users") 
 
 public class User {
     
@@ -20,6 +21,8 @@ public class User {
     private Integer id;
     @Column(unique=true)
     //It should be directly above private String username — not after the empty constructor.
+    // it makes username uinque(unique=no duplicates allowed ) , it is not a primary key , id is only primary key(1 primary key per table is concept)
+    // a table can have multiple unique columns but only one primary key .
     private String username;
     private String password;
     private String role;
