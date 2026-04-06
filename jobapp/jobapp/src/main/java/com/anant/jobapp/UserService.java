@@ -23,4 +23,15 @@ public class UserService {
 
         return userRepository.findByUsername(username);
     }
+    public String loginUser(User user){
+        User existingUser=findByUsername(user.getUsername());
+        if(existingUser!=null){
+            if(passwordEncoder.matches(user.getPassword(), existingUser.getPassword())){
+                return "Login successful";
+            }else{
+                return "Invalid password";
+            }
+        }
+        return "User not found";
+    }
 }

@@ -19,6 +19,6 @@ public class UserController {
 
     @PostMapping("/auth/login")
     public String loginUser(@RequestBody User user){
-        return "Login successful";
+        return userService.loginUser(user);
     }
 }
