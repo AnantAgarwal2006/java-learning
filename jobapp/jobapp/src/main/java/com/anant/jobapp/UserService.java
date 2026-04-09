@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private UserRepository userRepository;
     private BCryptPasswordEncoder passwordEncoder;
+    private JwtUtil jwtUtil;
 
-    public UserService(UserRepository userRepository,BCryptPasswordEncoder passwordEncoder){
+    public UserService(UserRepository userRepository,BCryptPasswordEncoder passwordEncoder,JwtUtil jwtUtil){
         this.userRepository=userRepository;
         this.passwordEncoder=passwordEncoder;
+        this.jwtUtil=jwtUtil;
     }
 
     public User registerUser(User user){
@@ -27,7 +29,8 @@ public class UserService {
         User existingUser=findByUsername(user.getUsername());
         if(existingUser!=null){
             if(passwordEncoder.matches(user.getPassword(), existingUser.getPassword())){
-                return "Login successful";
+                System.out.println("Login successful");
+                return jwtUtil.generateToken(existingUser.getUsername());
             }else{
                 return "Invalid password";
             }
